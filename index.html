@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="main.js"></script>
 	</head>
 	<body>
-		<div id="title">
-			<label>Hello World!</label>
+		<select onchange="showBreedImage(value)" name="breed_selector" id="breed_selector">
+		</select>
+		
+		<div>
+		<a id="wiki_link" target="_blank"></a>
+		<div id="breed_json"></div>
+		</div>
+		
+		<div>
+		<img id="breed_image"></img>
 		</div>
 	</body>
 </html>
