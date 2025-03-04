@@ -42,6 +42,9 @@ function showBreedImage(index)
   document.getElementById("breed_image").src= storedBreeds[index].image.url;
   
   document.getElementById("breed_json").textContent= storedBreeds[index].temperament;
+  document.getElementById("age").textContent = "Lifespan: " + storedBreeds[index].life_span + " years"
+  document.getElementById("country").textContent = "Country of Origin: " + storedBreeds[index].origin
+  document.getElementById("info").textContent = storedBreeds[index].description;
   
   
   document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url;
