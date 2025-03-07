@@ -1,4 +1,5 @@
 const url = `https://api.thecatapi.com/v1/breeds`;
+const url2 = `https://api.thecatapi.com/v1/images/search?limit=4`
 const api_key = "live_XrYSqirPLenmKLh25y7GUu96kiXA7tfW3CIHiJOWUVAFSbij3HgrZCsjwPzDyuq1";
 console.log(api_key);
 let storedBreeds = [];
@@ -49,4 +50,38 @@ function showBreedImage(index)
   
   document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url;
   document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url;
+}
+
+function showImages() {
+	// Clear out previous images
+	while (document.getElementById("grid").firstChild) {
+		document.getElementById("grid").removeChild(document.getElementById("grid").firstChild);
+	}
+	
+	fetch(url2,{headers: {
+		'x-api-key': api_key
+	  }})
+   .then((response) => {
+	 return response.json();
+   })
+  .then((data) => {
+	let imagesData = data;
+	imagesData.map(function(imageData) {
+	  
+	  let image = document.createElement('img');
+	  //use the url from the image object
+	  image.src = `${imageData.url}`;
+		  
+	  let gridCell = document.createElement('div');
+	  gridCell.classList.add('col');
+	  gridCell.classList.add('col-lg');
+	  gridCell.appendChild(image)
+		
+	  document.getElementById('grid').appendChild(gridCell);
+	  
+	  });
+  })
+  .catch(function(error) {
+	 console.log(error);
+  });
 }
