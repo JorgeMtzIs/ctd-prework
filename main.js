@@ -1,7 +1,6 @@
 const url = `https://api.thecatapi.com/v1/breeds`;
 const url2 = `https://api.thecatapi.com/v1/images/search?limit=4`
-const api_key = "live_XrYSqirPLenmKLh25y7GUu96kiXA7tfW3CIHiJOWUVAFSbij3HgrZCsjwPzDyuq1";
-console.log(api_key);
+const api_key = import.meta.env.VITE_CAT_API_KEY;
 let storedBreeds = [];
 
  fetch(url,{headers: {
@@ -38,7 +37,7 @@ let storedBreeds = [];
    console.log(error);
 });
 
-function showBreedImage(index)
+window.showBreedImage= function showBreedImage(index)
 { 
   document.getElementById("breed_image").src= storedBreeds[index].image.url;
   
@@ -52,7 +51,7 @@ function showBreedImage(index)
   document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url;
 }
 
-function showImages() {
+window.showImages= function showImages() {
 	// Clear out previous images
 	while (document.getElementById("grid").firstChild) {
 		document.getElementById("grid").removeChild(document.getElementById("grid").firstChild);
