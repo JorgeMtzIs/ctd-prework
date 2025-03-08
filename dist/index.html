@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="module" crossorigin src="/assets/index-FL4ug316.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-BAwcPIn5.css">
+	</head>
+	<body>
+		<select onchange="showBreedImage(value)" name="breed_selector" id="breed_selector">
+			<option>--Choose a breed--</option>
+		</select>
+		
+		<div>
+			<div id="breed_json"></div>
+			<div id="age">Lifespan: </div>
+			<div id="country">Country of Origin: </div>
+			<div id="info"></div>
+		</div>
+		<a id="wiki_link" target="_blank"></a>
+		
+		<div>
+		<img id="breed_image"></img>
+		</div>
+
+		<button onclick="showImages()">Click for more kitties!</button>
+		<div class="maincontent">
+			<div id="grid" class="imgrid"></div>
+		</div>
+	</body>
+</html>
