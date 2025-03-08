@@ -1,5 +1,5 @@
 img {
-    max-width: 40%;
+    max-width: 20%;
     height: auto;      
 }
 
@@ -19,7 +19,6 @@ img {
 	  flex-basis: 30%;
   }
   
-	/* Images crop and center to col-lg box up to 1000% centering (if 100% if it's 3x the size it doesn't fully center)Idk man why? projectors and stuff? */
   .col-lg img{
 	display:block;
 	  position: absolute;

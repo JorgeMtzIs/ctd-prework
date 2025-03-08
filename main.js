@@ -1,5 +1,5 @@
 const url = `https://api.thecatapi.com/v1/breeds`;
-const url2 = `https://api.thecatapi.com/v1/images/search?limit=4`
+const url2 = `https://api.thecatapi.com/v1/images/search?limit=9`
 const api_key = import.meta.env.VITE_CAT_API_KEY;
 let storedBreeds = [];
 
@@ -11,7 +11,7 @@ let storedBreeds = [];
  })
 .then((data) => {
    
-   //filter to only include those with an `image` object
+   // Filter to only include those with an `image` object
    data = data.filter(img=> img.image?.url!=null);
    console.log(data);
    storedBreeds = data;
@@ -20,18 +20,16 @@ let storedBreeds = [];
     const breed = storedBreeds[i];
     let option = document.createElement('option');
      
-     //skip any breeds that don't have an image
+     // Skip any breeds that don't have an image
     if(!breed.image)
 		continue;
      
-    //use the current array index
+    // Use the current array index
     option.value = i;
     option.innerHTML = `${breed.name}`;
 	document.getElementById('breed_selector').appendChild(option);
     
     }
-   //show the first breed by default
-   showBreedImage(0);
 })
 .catch(function(error) {
    console.log(error);
@@ -39,16 +37,30 @@ let storedBreeds = [];
 
 window.showBreedImage= function showBreedImage(index)
 { 
-  document.getElementById("breed_image").src= storedBreeds[index].image.url;
-  
-  document.getElementById("breed_json").textContent= storedBreeds[index].temperament;
-  document.getElementById("age").textContent = "Lifespan: " + storedBreeds[index].life_span + " years"
-  document.getElementById("country").textContent = "Country of Origin: " + storedBreeds[index].origin
-  document.getElementById("info").textContent = storedBreeds[index].description;
-  
-  
-  document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url;
-  document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url;
+	if (index === "--Choose a breed--") {
+		clearInfo()
+	} else {
+		document.getElementById("breed_image").src= storedBreeds[index].image.url;
+	
+		document.getElementById("breed_json").textContent= "Temperament: " + storedBreeds[index].temperament;
+		document.getElementById("age").textContent = "Lifespan: " + storedBreeds[index].life_span + " years"
+		document.getElementById("country").textContent = "Country of Origin: " + storedBreeds[index].origin
+		document.getElementById("info").textContent = storedBreeds[index].description;
+	
+	
+		document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url;
+		document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url;
+	}
+}
+
+function clearInfo() {
+	document.getElementById("breed_image").src= "";
+	document.getElementById("breed_json").textContent= "";
+	document.getElementById("age").textContent = ""
+	document.getElementById("country").textContent = ""
+  	document.getElementById("info").textContent = ""
+  	document.getElementById("wiki_link").href= ""
+	document.getElementById("wiki_link").innerHTML= ""
 }
 
 window.showImages= function showImages() {
@@ -68,7 +80,7 @@ window.showImages= function showImages() {
 	imagesData.map(function(imageData) {
 	  
 	  let image = document.createElement('img');
-	  //use the url from the image object
+	  // Use the url from the image object
 	  image.src = `${imageData.url}`;
 		  
 	  let gridCell = document.createElement('div');

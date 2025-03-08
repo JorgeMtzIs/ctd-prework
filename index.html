@@ -8,18 +8,18 @@
 	</head>
 	<body>
 		<select onchange="showBreedImage(value)" name="breed_selector" id="breed_selector">
+			<option>--Choose a breed--</option>
 		</select>
 		
-		<div>
+		<div id="breed_info">
 			<div id="breed_json"></div>
-			<div id="age">Lifespan: </div>
-			<div id="country">Country of Origin: </div>
+			<div id="age"></div>
+			<div id="country"></div>
 			<div id="info"></div>
-		</div>
-		<a id="wiki_link" target="_blank"></a>
-		
-		<div>
-		<img id="breed_image"></img>
+			<a id="wiki_link" target="_blank"></a>
+			<div>
+			<img id="breed_image"></img>
+			</div>
 		</div>
 
 		<button onclick="showImages()">Click for more kitties!</button>
