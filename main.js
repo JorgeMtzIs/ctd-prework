@@ -3,6 +3,7 @@ const url2 = `https://api.thecatapi.com/v1/images/search?limit=9`
 const api_key = import.meta.env.VITE_CAT_API_KEY;
 let storedBreeds = [];
 
+// Fetch breeds data and filter based on whether the data has an image
  fetch(url,{headers: {
       'x-api-key': api_key
     }})
@@ -35,6 +36,9 @@ let storedBreeds = [];
    console.log(error);
 });
 
+/*
+*  Displays the information of the selected breed specified by index
+*/
 window.showBreedImage= function showBreedImage(index)
 { 
 	if (index === "--Choose a breed--") {
@@ -52,7 +56,12 @@ window.showBreedImage= function showBreedImage(index)
 	}
 }
 
+
+/*
+*  Fetches 9 random images from the /images endpoint and displays them in a 3x3 grid
+*/
 window.showImages= function showImages() {
+
 	// Clear out previous images
 	while (document.getElementById("grid").firstChild) {
 		document.getElementById("grid").removeChild(document.getElementById("grid").firstChild);
