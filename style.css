@@ -1,6 +1,33 @@
-img {
+select {
+	font-size: x-large;
+  	background-color: #d5910e;
+  	border-radius: 15px;
+}
+
+.info-box {
+	border-style: solid;
+	border-radius: 10px;
+	border-width: thin;
+	margin-block: 10px;
+	margin-right: 20%;
+	padding-left: 10px;
+	font-size: larger;
+	background-color: #d5910e;
+}
+
+.info-img {
     max-width: 20%;
     height: auto;      
+}
+
+button {
+	margin: 0 auto;
+	display: block;
+	font-size: x-large;
+	color: whitesmoke;
+	margin-top: 25px;
+	background-color: rgb(5, 102, 134);
+	border-radius: 15px;
 }
 
 .maincontent{

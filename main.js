@@ -38,29 +38,18 @@ let storedBreeds = [];
 window.showBreedImage= function showBreedImage(index)
 { 
 	if (index === "--Choose a breed--") {
-		clearInfo()
+		document.getElementById("breed_info").setAttribute("hidden", "true");
 	} else {
+		document.getElementById("breed_info").setAttribute("hidden", "false");
 		document.getElementById("breed_image").src= storedBreeds[index].image.url;
-	
 		document.getElementById("breed_json").textContent= "Temperament: " + storedBreeds[index].temperament;
 		document.getElementById("age").textContent = "Lifespan: " + storedBreeds[index].life_span + " years"
 		document.getElementById("country").textContent = "Country of Origin: " + storedBreeds[index].origin
 		document.getElementById("info").textContent = storedBreeds[index].description;
-	
-	
 		document.getElementById("wiki_link").href= storedBreeds[index].wikipedia_url;
-		document.getElementById("wiki_link").innerHTML= storedBreeds[index].wikipedia_url;
+		document.getElementById("wiki_link").innerHTML= "More info: " + storedBreeds[index].wikipedia_url;
+		document.getElementById("breed_info").removeAttribute("hidden");
 	}
-}
-
-function clearInfo() {
-	document.getElementById("breed_image").src= "";
-	document.getElementById("breed_json").textContent= "";
-	document.getElementById("age").textContent = ""
-	document.getElementById("country").textContent = ""
-  	document.getElementById("info").textContent = ""
-  	document.getElementById("wiki_link").href= ""
-	document.getElementById("wiki_link").innerHTML= ""
 }
 
 window.showImages= function showImages() {
