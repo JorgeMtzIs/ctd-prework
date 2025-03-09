@@ -1,2 +1,0 @@
-Add more info to the breed results, make them prettier
-Add random grid of images, prob 9x9. Name it extra kitty zone or smth.
